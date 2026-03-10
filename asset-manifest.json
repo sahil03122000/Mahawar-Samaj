@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Mahawar-Samaj/static/css/main.0d239eb1.css",
+    "main.js": "/Mahawar-Samaj/static/js/main.e7f0d550.js",
+    "static/js/453.e3c5249a.chunk.js": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js",
+    "index.html": "/Mahawar-Samaj/index.html",
+    "main.0d239eb1.css.map": "/Mahawar-Samaj/static/css/main.0d239eb1.css.map",
+    "main.e7f0d550.js.map": "/Mahawar-Samaj/static/js/main.e7f0d550.js.map",
+    "453.e3c5249a.chunk.js.map": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d239eb1.css",
+    "static/js/main.e7f0d550.js"
+  ]
+}
