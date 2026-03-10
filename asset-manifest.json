@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Mahawar-Samaj/static/css/main.841f1a0f.css",
-    "main.js": "/Mahawar-Samaj/static/js/main.163fdf45.js",
-    "static/js/453.e3c5249a.chunk.js": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js",
-    "index.html": "/Mahawar-Samaj/index.html",
-    "main.841f1a0f.css.map": "/Mahawar-Samaj/static/css/main.841f1a0f.css.map",
-    "main.163fdf45.js.map": "/Mahawar-Samaj/static/js/main.163fdf45.js.map",
-    "453.e3c5249a.chunk.js.map": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js.map"
+    "main.css": "/static/css/main.841f1a0f.css",
+    "main.js": "/static/js/main.d563d85b.js",
+    "static/js/453.e3c5249a.chunk.js": "/static/js/453.e3c5249a.chunk.js",
+    "index.html": "/index.html",
+    "main.841f1a0f.css.map": "/static/css/main.841f1a0f.css.map",
+    "main.d563d85b.js.map": "/static/js/main.d563d85b.js.map",
+    "453.e3c5249a.chunk.js.map": "/static/js/453.e3c5249a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.841f1a0f.css",
-    "static/js/main.163fdf45.js"
+    "static/js/main.d563d85b.js"
   ]
 }
