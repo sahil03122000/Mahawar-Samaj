@@ -1,0 +1,40 @@
+{
+  "site": {
+    "name": "Mahawar Samaj",
+    "tagline": "Unity • Culture • Progress",
+    "year": "1952"
+  },
+
+  "ticker": [
+    "Scholarship 2025 — Apply by 31st March",
+    "Holi Milan Samaroh — 14 March",
+    "Free Health Camp — 20 March",
+    "500+ Matrimonial Profiles Available"
+  ],
+
+  "events": [
+    {
+      "title": "Holi Milan Samaroh",
+      "date": "14 March",
+      "location": "Jaipur",
+      "description": "Annual celebration of colors and community."
+    },
+    {
+      "title": "Navratri Mahotsav",
+      "date": "02 April",
+      "location": "Samaj Mandir",
+      "description": "Nine nights of devotional Garba."
+    }
+  ],
+
+  "news": [
+    {
+      "title": "Scholarship 2025 Open",
+      "text": "50 scholarships available for students."
+    },
+    {
+      "title": "Health Camp",
+      "text": "Free health check-up for senior members."
+    }
+  ]
+}
