@@ -1,15 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import "./App.css"
+import data from "./data/siteData.json"
+import Footer_div from "./component/Footer_div";
+import ContactSection from "./component/ContactSection";
+import Aboutus from "./component/Aboutus";
 
 /* ══ DATA ══ */
-const TICKERS = [
-  { i: "📢", t: <><strong>NEW:</strong> Scholarship 2025 — Apply by 31st March</> },
-  { i: "🎉", t: <><strong>UPCOMING:</strong> Holi Milan Samaroh — 14 March, Jaipur</> },
-  { i: "🏥", t: <><strong>HEALTH CAMP:</strong> Free camp for seniors — 20 March</> },
-  { i: "💒", t: <><strong>MATRIMONIAL:</strong> 500+ new profiles — Visit portal today</> },
-  { i: "🏆", t: <><strong>ACHIEVEMENT:</strong> Shri Ramesh Mahawar honoured with Rajasthan Business Award</> },
-  { i: "📋", t: <><strong>MEETING:</strong> Quarterly Samaj Parishad — 25 May</> },
-];
+// 📢,🎉,🏥,💒,🏆,📋
+const TICKERS = data.ticker;
+
 
 const SLIDES = [
   { id: 1, e: "🎨", bg: "linear-gradient(135deg,#FF6B00,#D4A017 40%,#FF4500)", tag: "FESTIVAL", tc: "#FF6B00", title: "होली मिलन समारोह", sub: "Holi Milan Samaroh 2024", desc: "A vibrant celebration of colours, joy and togetherness as the Mahawar community comes alive with festivity.", date: "March 2024" },
@@ -60,7 +59,7 @@ const GALLERY = [
 
 const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
   id: i,
-  size: Math.random() * 3 + 1,
+  size: Math.random() * 3 + 10,
   left: Math.random() * 100,
   delay: -(Math.random() * 20),
   dur: Math.random() * 10 + 14
@@ -72,22 +71,66 @@ function CelebrationSlider() {
   const [dir, setDir] = useState("next");
   const [anim, setAnim] = useState(false);
   const [paused, setPaused] = useState(false);
+
   const INTV = 5000;
 
   const goTo = useCallback((idx, d = "next") => {
     if (anim) return;
-    setDir(d); setPrev(cur); setAnim(true); setCur(idx);
-    setTimeout(() => { setPrev(null); setAnim(false); }, 700);
+
+    setDir(d);
+    setPrev(cur);
+    setAnim(true);
+    setCur(idx);
+
+    setTimeout(() => {
+      setPrev(null);
+      setAnim(false);
+    }, 700);
   }, [anim, cur]);
 
-  const next = useCallback(() => goTo((cur + 1) % SLIDES.length, "next"), [cur, goTo]);
-  const back = useCallback(() => goTo((cur - 1 + SLIDES.length) % SLIDES.length, "prev"), [cur, goTo]);
+  const next = useCallback(() => {
+    setCur((c) => {
+      const idx = (c + 1) % SLIDES.length;
+
+      setDir("next");
+      setPrev(c);
+      setAnim(true);
+
+      setTimeout(() => {
+        setPrev(null);
+        setAnim(false);
+      }, 700);
+
+      return idx;
+    });
+  }, []);
+
+  const back = useCallback(() => {
+    setCur((c) => {
+      const idx = (c - 1 + SLIDES.length) % SLIDES.length;
+
+      setDir("prev");
+      setPrev(c);
+      setAnim(true);
+
+      setTimeout(() => {
+        setPrev(null);
+        setAnim(false);
+      }, 700);
+
+      return idx;
+    });
+  }, []);
 
   useEffect(() => {
-    if (paused) return;
-    const t = setInterval(next, INTV);
-    return () => clearInterval(t);
-  }, [paused, next]);
+    if (paused || anim) return;
+
+    const timer = setInterval(() => {
+      next();
+    }, INTV);
+
+    return () => clearInterval(timer);
+  }, [paused, anim, next]);
 
   const s = SLIDES[cur];
   const ps = prev !== null ? SLIDES[prev] : null;
@@ -96,20 +139,35 @@ function CelebrationSlider() {
     <section className="sec fu vis" style={{ background: "linear-gradient(180deg,#FFF8EE,#F5E6C8)" }}>
       <div className="sh">
         <span className="sey">— उत्सव दीर्घा —</span>
-        <h2 className="st">Celebrations & <em style={{ color: "var(--gd)", fontStyle: "normal" }}>Moments</em></h2>
+        <h2 className="st">
+          Celebrations & <em style={{ color: "var(--gd)", fontStyle: "normal" }}>Moments</em>
+        </h2>
         <div className="sr"><span className="srg">✦</span></div>
       </div>
-      <div className="cslider" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+
+      <div
+        className="cslider"
+      // onMouseEnter={() => setPaused(true)}
+      // onMouseLeave={() => setPaused(false)}
+      >
         <div className="cstage">
+
           {ps && (
             <div className={`cslide cslide-exit cslide-exit-${dir}`}>
-              <div className="csfall" style={{ background: ps.bg }}><span className="csfemoji">{ps.e}</span></div>
+              <div className="csfall" style={{ background: ps.bg }}>
+                <span className="csfemoji">{ps.e}</span>
+              </div>
               <div className="csovr" />
             </div>
           )}
+
           <div className={`cslide cslide-active ${anim ? `cslide-enter-${dir}` : ""}`}>
-            <div className="csfall" style={{ background: s.bg }}><span className="csfemoji">{s.e}</span></div>
+            <div className="csfall" style={{ background: s.bg }}>
+              <span className="csfemoji">{s.e}</span>
+            </div>
+
             <div className="csovr" />
+
             <div className={`cscap ${anim ? "cscap-in" : "cscap-vis"}`}>
               <span className="cctag" style={{ background: s.tc }}>{s.tag}</span>
               <h3 className="cctitle">{s.title}</h3>
@@ -118,110 +176,131 @@ function CelebrationSlider() {
               <span className="ccdate">📅 {s.date}</span>
             </div>
           </div>
+
           <button className="csarr csarr-l" onClick={back}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6" /></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
           </button>
+
           <button className="csarr csarr-r" onClick={next}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6" /></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
           </button>
+
           <div className="csctr">
             <span className="ccur">{String(cur + 1).padStart(2, "0")}</span>
             <span className="csep"> / </span>
             <span className="ctot">{String(SLIDES.length).padStart(2, "0")}</span>
           </div>
+
           <div className="cpwrap">
-            <div key={cur} className={`cpbar${paused ? " cpbar-p" : ""}`} style={{ animationDuration: `${INTV}ms` }} />
+            <div
+              key={cur}
+              className={`cpbar${paused ? " cpbar-p" : ""}`}
+              style={{ animationDuration: `${INTV}ms` }}
+            />
           </div>
         </div>
+
         <div className="cthumbs">
           {SLIDES.map((sl, i) => (
-            <button key={sl.id} className={`cthumb${i === cur ? " act" : ""}`} onClick={() => goTo(i, i > cur ? "next" : "prev")}>
-              <span className="cthumb-in" style={{ background: sl.bg }}>{sl.e}</span>
+            <button
+              key={sl.id}
+              className={`cthumb${i === cur ? " act" : ""}`}
+              onClick={() => goTo(i, i > cur ? "next" : "prev")}
+            >
+              <span className="cthumb-in" style={{ background: sl.bg }}>
+                {sl.e}
+              </span>
+
               {i === cur && <span className="cthlbl">{sl.tag}</span>}
             </button>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
 
 /* ══ CONTACT SECTION ══ */
-function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
-  const [sent, setSent] = useState(false);
-  const upd = (k, v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = () => {
-    setSent(true);
-    setTimeout(() => setSent(false), 3500);
-    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-  };
-  return (
-    <section className="sec">
-      <div className="sh fu">
-        <span className="sey">— संपर्क करें —</span>
-        <h2 className="st">Contact <em style={{ color: "var(--gd)", fontStyle: "normal" }}>Us</em></h2>
-        <div className="sr"><span className="srg">✦</span></div>
-      </div>
-      <div className="cinfo fu">
-        {[{ i: "📍", l: "Address", v: "Samaj Bhawan, Jaipur, Rajasthan" }, { i: "📞", l: "Phone", v: "+91 98765 43210" }, { i: "✉️", l: "Email", v: "info@mahawarsamaj.org" }, { i: "🕐", l: "Office Hours", v: "Mon–Sat, 10AM – 6PM" }].map(c => (
-          <div key={c.l} className="cinfo-card">
-            <span className="cinfo-icon">{c.i}</span>
-            <div className="cinfo-lbl">{c.l}</div>
-            <div className="cinfo-val">{c.v}</div>
-          </div>
-        ))}
-      </div>
-      <div className="cform fu">
-        {sent ? (
-          <div style={{ textAlign: "center", padding: "2.5rem" }}>
-            <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🙏</div>
-            <h3 style={{ fontFamily: "'Yatra One',cursive", fontSize: "1.5rem", color: "var(--mr)", marginBottom: ".5rem" }}>धन्यवाद! Thank You</h3>
-            <p style={{ color: "var(--tm)", fontSize: "1rem" }}>Your message has been received. We will contact you shortly.</p>
-          </div>
-        ) : (
-          <>
-            <div className="cform-row">
-              <div className="cfield">
-                <label>YOUR NAME</label>
-                <input value={form.name} onChange={e => upd("name", e.target.value)} placeholder="Shri / Smt. Full Name" />
-              </div>
-              <div className="cfield">
-                <label>PHONE NUMBER</label>
-                <input value={form.phone} onChange={e => upd("phone", e.target.value)} placeholder="+91 XXXXX XXXXX" />
-              </div>
-            </div>
-            <div className="cform-row">
-              <div className="cfield">
-                <label>EMAIL ADDRESS</label>
-                <input type="email" value={form.email} onChange={e => upd("email", e.target.value)} placeholder="your@email.com" />
-              </div>
-              <div className="cfield">
-                <label>SUBJECT</label>
-                <select value={form.subject} onChange={e => upd("subject", e.target.value)}>
-                  <option value="">Select Subject</option>
-                  <option>Membership Enquiry</option>
-                  <option>Events Information</option>
-                  <option>Scholarship Query</option>
-                  <option>Matrimonial</option>
-                  <option>Health Camp</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div className="cfield">
-              <label>YOUR MESSAGE</label>
-              <textarea value={form.message} onChange={e => upd("message", e.target.value)} placeholder="Write your message here..." />
-            </div>
-            <div style={{ textAlign: "center", marginTop: ".5rem" }}>
-              <button className="btn-f" onClick={submit}>🙏 Send Message</button>
-            </div>
-          </>
-        )}
-      </div>
-    </section>
-  );
-}
+// function ContactSection() {
+//   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+//   const [sent, setSent] = useState(false);
+//   const upd = (k, v) => setForm(f => ({ ...f, [k]: v }));
+//   const submit = () => {
+//     setSent(true);
+//     setTimeout(() => setSent(false), 3500);
+//     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+//   };
+//   return (
+//     <section className="sec">
+//       <div className="sh fu">
+//         <span className="sey">— संपर्क करें —</span>
+//         <h2 className="st">Contact <em style={{ color: "var(--gd)", fontStyle: "normal" }}>Us</em></h2>
+//         <div className="sr"><span className="srg">✦</span></div>
+//       </div>
+//       <div className="cinfo fu">
+//         {[{ i: "📍", l: "Address", v: "Samaj Bhawan, Jaipur, Rajasthan" }, { i: "📞", l: "Phone", v: "+91 98765 43210" }, { i: "✉️", l: "Email", v: "info@mahawarsamaj.org" }, { i: "🕐", l: "Office Hours", v: "Mon–Sat, 10AM – 6PM" }].map(c => (
+//           <div key={c.l} className="cinfo-card">
+//             <span className="cinfo-icon">{c.i}</span>
+//             <div className="cinfo-lbl">{c.l}</div>
+//             <div className="cinfo-val">{c.v}</div>
+//           </div>
+//         ))}
+//       </div>
+//       <div className="cform fu">
+//         {sent ? (
+//           <div style={{ textAlign: "center", padding: "2.5rem" }}>
+//             <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🙏</div>
+//             <h3 style={{ fontFamily: "'Yatra One',cursive", fontSize: "1.5rem", color: "var(--mr)", marginBottom: ".5rem" }}>धन्यवाद! Thank You</h3>
+//             <p style={{ color: "var(--tm)", fontSize: "1rem" }}>Your message has been received. We will contact you shortly.</p>
+//           </div>
+//         ) : (
+//           <>
+//             <div className="cform-row">
+//               <div className="cfield">
+//                 <label>YOUR NAME</label>
+//                 <input value={form.name} onChange={e => upd("name", e.target.value)} placeholder="Shri / Smt. Full Name" />
+//               </div>
+//               <div className="cfield">
+//                 <label>PHONE NUMBER</label>
+//                 <input value={form.phone} onChange={e => upd("phone", e.target.value)} placeholder="+91 XXXXX XXXXX" />
+//               </div>
+//             </div>
+//             <div className="cform-row">
+//               <div className="cfield">
+//                 <label>EMAIL ADDRESS</label>
+//                 <input type="email" value={form.email} onChange={e => upd("email", e.target.value)} placeholder="your@email.com" />
+//               </div>
+//               <div className="cfield">
+//                 <label>SUBJECT</label>
+//                 <select value={form.subject} onChange={e => upd("subject", e.target.value)}>
+//                   <option value="">Select Subject</option>
+//                   <option>Membership Enquiry</option>
+//                   <option>Events Information</option>
+//                   <option>Scholarship Query</option>
+//                   <option>Matrimonial</option>
+//                   <option>Health Camp</option>
+//                   <option>Other</option>
+//                 </select>
+//               </div>
+//             </div>
+//             <div className="cfield">
+//               <label>YOUR MESSAGE</label>
+//               <textarea value={form.message} onChange={e => upd("message", e.target.value)} placeholder="Write your message here..." />
+//             </div>
+//             <div style={{ textAlign: "center", marginTop: ".5rem" }}>
+//               <button className="btn-f" onClick={submit}>🙏 Send Message</button>
+//             </div>
+//           </>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ══ MAIN APP ══ */
 export default function MahawarSamaj() {
@@ -265,7 +344,10 @@ export default function MahawarSamaj() {
         <div style={{ overflow: "hidden", flex: 1 }}>
           <div className="tick-track">
             {DT.map((t, i) => (
-              <span key={i} className="tick-item">{t.i} {t.t} <span style={{ color: "var(--sf)", margin: "0 .3rem" }}>✦</span></span>
+              <span key={i} className="tick-item">{t.i}
+
+                <strong>{t.t}:</strong> {t.p}
+                <span style={{ color: "var(--sf)", margin: "0 .3rem" }}>✦</span></span>
             ))}
           </div>
         </div>
@@ -341,7 +423,10 @@ export default function MahawarSamaj() {
         <div className="ibanner">
           <div className="imarq">
             {DT.map((t, i) => (
-              <span key={i} className="ii">{t.i} {t.t}<span style={{ color: "var(--sf)", margin: "0 .5rem" }}>•</span></span>
+              <span key={i} className="tick-item">{t.i}
+
+                <strong>{t.t}:</strong> {t.p}
+                <span style={{ color: "var(--sf)", margin: "0 .3rem" }}>✦</span></span>
             ))}
           </div>
         </div>
@@ -402,101 +487,15 @@ export default function MahawarSamaj() {
       )}
 
       {/* ═══ ABOUT ═══ */}
-      {tab === "about" && <>
-        <div style={{ background: "linear-gradient(135deg,#3A0000,#6B0000 40%,#8B2500)", padding: "4rem 2rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", opacity: .05 }}>
-            <span style={{ fontSize: "28rem", lineHeight: 1, color: "var(--gd)", fontFamily: "serif" }}>ॐ</span>
-          </div>
-          <span style={{ fontFamily: "'Crimson Pro',serif", fontStyle: "italic", color: "var(--sf)", letterSpacing: "4px", fontSize: ".85rem", display: "block", marginBottom: "6px" }}>— हमारे बारे में —</span>
-          <h2 style={{ fontFamily: "'Yatra One',cursive", fontSize: "clamp(2rem,5vw,3.5rem)", color: "var(--gd2)", marginBottom: "1rem", position: "relative", zIndex: 1 }}>About Mahawar Samaj</h2>
-          <p style={{ fontFamily: "'Tiro Devanagari Hindi',serif", color: "var(--pa)", fontSize: "1.2rem", opacity: .9, letterSpacing: "2px", position: "relative", zIndex: 1 }}>एकता • संस्कृति • प्रगति</p>
-        </div>
-
-        <section className="sec">
-          <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
-            <div className="fu">
-              <span className="sey">— हमारी कहानी —</span>
-              <h3 style={{ fontFamily: "'Yatra One',cursive", fontSize: "2rem", color: "var(--mr)", marginBottom: "1.2rem", lineHeight: 1.2 }}>Our Story Since <em style={{ color: "var(--sf)", fontStyle: "normal" }}>1952</em></h3>
-              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85, marginBottom: "1rem" }}>Mahawar Samaj was established in 1952 in Jaipur, Rajasthan, by visionary community leaders who believed in the power of unity. What started as a small gathering has grown into a thriving community of 5,000+ members across 12+ cities.</p>
-              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85 }}>For over 70 years, we have celebrated our cultural festivals, supported members through scholarships, health camps, matrimonial services, and preserved the unique heritage of the Mahawar community.</p>
-            </div>
-            <div className="fu" style={{ transitionDelay: ".15s" }}>
-              <div style={{ background: "linear-gradient(135deg,#8B0000,#D4A017 60%,#FF6B00)", borderRadius: 16, height: 300, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "7rem", boxShadow: "0 20px 50px rgba(139,0,0,.25)" }}>🏛️</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="sec sec-alt">
-          <div className="sh fu">
-            <span className="sey">— हमारे मूल्य —</span>
-            <h2 className="st">Our Core Values</h2>
-            <div className="sr"><span className="srg">✦</span></div>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "1.4rem", maxWidth: 1060, margin: "0 auto" }}>
-            {[
-              { e: "🤝", t: "एकता • Unity", d: "Together we stand stronger. Every member is family, every voice matters." },
-              { e: "🎭", t: "संस्कृति • Culture", d: "Preserving our rich Rajasthani traditions, festivals and heritage with pride." },
-              { e: "📚", t: "शिक्षा • Education", d: "Empowering youth through scholarships, skill training and career guidance." },
-              { e: "❤️", t: "सेवा • Service", d: "Serving the community through health camps, welfare funds and free legal aid." },
-              { e: "💒", t: "विवाह • Matrimony", d: "Connecting families through our trusted matrimonial portal and Vivah Samarohs." },
-              { e: "🌟", t: "प्रगति • Progress", d: "Building a modern, prosperous future while staying rooted in timeless values." },
-            ].map((v, i) => (
-              <div key={i} className="fu" style={{ transitionDelay: `${i * .07}s`, background: "white", borderRadius: 12, padding: "1.8rem 1.5rem", textAlign: "center", boxShadow: "0 4px 20px rgba(139,0,0,.07)", border: "1px solid rgba(212,160,23,.15)" }}>
-                <div style={{ fontSize: "2.8rem", marginBottom: ".8rem" }}>{v.e}</div>
-                <div style={{ fontFamily: "'Yatra One',cursive", fontSize: "1rem", color: "var(--mr)", marginBottom: ".5rem" }}>{v.t}</div>
-                <div style={{ fontSize: ".88rem", color: "var(--tm)", lineHeight: 1.7 }}>{v.d}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="sec">
-          <div className="sh fu">
-            <span className="sey">— नेतृत्व —</span>
-            <h2 className="st">Our Leadership</h2>
-            <div className="sr"><span className="srg">✦</span></div>
-          </div>
-          <div className="mgrid">
-            {MEMBERS.map((m, i) => (
-              <div key={i} className="mcard fu" style={{ transitionDelay: `${i * .07}s` }}>
-                <div className="mavt" style={{ background: m.g }}>{m.i}</div>
-                <div className="mn">{m.n}</div>
-                <div className="mr2">{m.r}</div>
-                <div className="mc">📍 {m.c}</div>
-                <span className="mbadge">{m.b}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="sec sec-alt">
-          <div className="sh fu">
-            <span className="sey">— झलकियाँ —</span>
-            <h2 className="st">Celebration Gallery</h2>
-            <div className="sr"><span className="srg">✦</span></div>
-          </div>
-          <div className="ggrid fu">
-            {GALLERY.map((g, i) => (
-              <div key={i} className="gitem">
-                <div className="ginn" style={{ background: g.bg }}>
-                  {g.e}<div className="govr"><span className="gcap">{g.l}</span></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="qsec">
-          <p className="qt">"समाज की एकता ही हमारी सबसे बड़ी शक्ति है।<br />Unity of community is our greatest strength."</p>
-          <p className="qa">— Mahawar Samaj Founding Charter, 1952</p>
-        </div>
-      </>}
+      {tab === "about" && 
+      <Aboutus/>
+      }
 
       {/* ═══ CONTACT ═══ */}
       {tab === "contact" && <ContactSection />}
 
       {/* FOOTER */}
-      <footer className="footer">
+      {/* <footer className="footer">
         <div className="fg">
           <div>
             <span className="flogo">महावर समाज</span>
@@ -559,7 +558,10 @@ export default function MahawarSamaj() {
             </a>
           </p>
         </div>
-      </footer>
+      </footer> */}
+      <Footer_div
+        setTab={setTab}
+      />
     </div>
   );
 }

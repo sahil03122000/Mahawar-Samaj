@@ -1,17 +1,27 @@
 {
   "site": {
     "name": "Mahawar Samaj",
-    "tagline": "Unity • Culture • Progress",
-    "year": "1952"
+    "hindi": "महावर समाज",
+    "tagline": "Serving the Mahawar community with unity, tradition and progress. Building a stronger tomorrow together.",
+    "year": "2023"
   },
-
   "ticker": [
-    "Scholarship 2025 — Apply by 31st March",
-    "Holi Milan Samaroh — 14 March",
-    "Free Health Camp — 20 March",
-    "500+ Matrimonial Profiles Available"
+    {
+      "i": "📢",
+      "t": "NEW",
+      "p": "Check out our latest updates!"
+    },
+    {
+      "i": "🎉",
+      "t": "UPCOMING",
+      "p": "Holi Milan Samaroh — 15 March, Ateli Mandi"
+    },
+    {
+      "i": "🏆",
+      "t": "ACHIEVEMENT",
+      "p": "Deepika Gupta achieves Chartered Accountant (CA) qualification"
+    }
   ],
-
   "events": [
     {
       "title": "Holi Milan Samaroh",
@@ -26,7 +36,6 @@
       "description": "Nine nights of devotional Garba."
     }
   ],
-
   "news": [
     {
       "title": "Scholarship 2025 Open",
@@ -35,6 +44,139 @@
     {
       "title": "Health Camp",
       "text": "Free health check-up for senior members."
+    }
+  ],
+  "contactus": [
+    {
+      "i": "📍",
+      "l": "Address",
+      "v": "Samaj Bhawan, Ateli Mandi, Haryana"
+    },
+    {
+      "i": "📞",
+      "l": "Phone",
+      "v": "+91 99090 90900"
+    },
+    {
+      "i": "✉️",
+      "l": "Email",
+      "v": "info@mahawarsamaj.org"
+    },
+    {
+      "i": "🕐",
+      "l": "Office Hours",
+      "v": "Mon–Sat, 10AM – 6PM"
+    }
+  ],
+  "footer": {
+    "services": [
+      "Scholarships",
+      "Health Camps",
+      "Matrimonial",
+      "Skill Training",
+      "Welfare Fund",
+      "Legal Aid"
+    ],
+    "pray": "🙏 ॐ नमः शिवाय • जय श्री राम • जय माँ भवानी 🙏",
+    "poweredby": "Sahil Gupta",
+    "poweredbyur": "https://sahilgupta03.github.io/sahil_portfolio/"
+  },
+  "MEMBERS": [
+    {
+      "n": "Shri Rajendra Mahawar",
+      "r": "PRESIDENT",
+      "c": "Jaipur",
+      "b": "पदाधिकारी",
+      "i": "र",
+      "g": "linear-gradient(135deg,#FF6B00,#8B0000)"
+    },
+    {
+      "n": "Shri Suresh Agrawal",
+      "r": "SECRETARY",
+      "c": "Jaipur",
+      "b": "पदाधिकारी",
+      "i": "सु",
+      "g": "linear-gradient(135deg,#8B0000,#4A0000)"
+    },
+    {
+      "n": "Smt. Sunita Devi",
+      "r": "TREASURER",
+      "c": "Jodhpur",
+      "b": "पदाधिकारी",
+      "i": "सु",
+      "g": "linear-gradient(135deg,#D4A017,#8B6010)"
+    },
+    {
+      "n": "Shri Vikram Mahawar",
+      "r": "VICE PRESIDENT",
+      "c": "Kota",
+      "b": "पदाधिकारी",
+      "i": "वि",
+      "g": "linear-gradient(135deg,#006B30,#003A1A)"
+    },
+    {
+      "n": "Smt. Rekha Sharma",
+      "r": "WOMEN'S WING",
+      "c": "Ajmer",
+      "b": "सदस्य",
+      "i": "रे",
+      "g": "linear-gradient(135deg,#8B0050,#4A0030)"
+    },
+    {
+      "n": "Shri Deepak Mahawar",
+      "r": "YOUTH LEADER",
+      "c": "Bikaner",
+      "b": "युवा नेता",
+      "i": "दी",
+      "g": "linear-gradient(135deg,#001A4A,#003A8B)"
+    },
+    {
+      "n": "Shri Mahesh Gupta",
+      "r": "CULTURAL HEAD",
+      "c": "Jaipur",
+      "b": "सदस्य",
+      "i": "म",
+      "g": "linear-gradient(135deg,#5C1A00,#8B3300)"
+    },
+    {
+      "n": "Dr. Anita Mahawar",
+      "r": "HEALTH COMMITTEE",
+      "c": "Udaipur",
+      "b": "विशेषज्ञ",
+      "i": "अ",
+      "g": "linear-gradient(135deg,#1A3A00,#3A6B00)"
+    }
+  ],
+  "GALLERY": [
+    {
+      "e": "🪔",
+      "bg": "linear-gradient(135deg,#8B0000,#D4A017 60%,#FF6B00)",
+      "l": "Diwali Celebration 2024"
+    },
+    {
+      "e": "🎊",
+      "bg": "linear-gradient(135deg,#FF6B00,#8B0000)",
+      "l": "Annual Function"
+    },
+    {
+      "e": "🏛️",
+      "bg": "linear-gradient(135deg,#5C3D1E,#D4A017)",
+      "l": "Samaj Bhawan"
+    },
+    {
+      "e": "👨‍👩‍👧‍👦",
+      "bg": "linear-gradient(135deg,#4A0000,#FF8C00)",
+      "l": "Community Meet"
+    },
+    {
+      "e": "🎭",
+      "bg": "linear-gradient(135deg,#D4A017,#8B0000)",
+      "l": "Cultural Program"
+    },
+    {
+      "e": "📚",
+      "bg": "linear-gradient(135deg,#001A4A,#FF6B00)",
+      "l": "Scholarship Award"
     }
   ]
 }

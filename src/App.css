@@ -429,7 +429,7 @@ body {
 .hh1 em {
   color: var(--gd2);
   font-style: normal;
-  position: relative;
+  /* position: relative; */
 }
 
 .hh1 em::after {
