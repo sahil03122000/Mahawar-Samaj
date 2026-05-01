@@ -17,9 +17,9 @@ function Aboutus() {
           <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
             <div className="fu">
               <span className="sey">— हमारी कहानी —</span>
-              <h3 style={{ fontFamily: "'Yatra One',cursive", fontSize: "2rem", color: "var(--mr)", marginBottom: "1.2rem", lineHeight: 1.2 }}>Our Story Since <em style={{ color: "var(--sf)", fontStyle: "normal" }}>1952</em></h3>
-              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85, marginBottom: "1rem" }}>Mahawar Samaj was established in 1952 in Jaipur, Rajasthan, by visionary community leaders who believed in the power of unity. What started as a small gathering has grown into a thriving community of 5,000+ members across 12+ cities.</p>
-              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85 }}>For over 70 years, we have celebrated our cultural festivals, supported members through scholarships, health camps, matrimonial services, and preserved the unique heritage of the Mahawar community.</p>
+              <h3 style={{ fontFamily: "'Yatra One',cursive", fontSize: "2rem", color: "var(--mr)", marginBottom: "1.2rem", lineHeight: 1.2 }}>Our Story Since <em style={{ color: "var(--sf)", fontStyle: "normal" }}>{data.site.year}</em></h3>
+              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85, marginBottom: "1rem" }}>Mahawar Samaj was established in {data.site.year} in Ateli Mandi, Haryana, by visionary community leaders who believed in the power of unity. What started as a small gathering has grown into a thriving community of 90+ famaily across 2+ cities.</p>
+              <p style={{ fontSize: "1rem", color: "var(--tm)", lineHeight: 1.85 }}>For over 5years, we have celebrated our cultural festivals, supported members through scholarships, health camps, matrimonial services, and preserved the unique heritage of the Mahawar community.</p>
             </div>
             <div className="fu" style={{ transitionDelay: ".15s" }}>
               <div style={{ background: "linear-gradient(135deg,#8B0000,#D4A017 60%,#FF6B00)", borderRadius: 16, height: 300, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "7rem", boxShadow: "0 20px 50px rgba(139,0,0,.25)" }}>🏛️</div>
@@ -60,11 +60,22 @@ function Aboutus() {
           <div className="mgrid">
             {data.MEMBERS.map((m, i) => (
               <div key={i} className="mcard fu" style={{ transitionDelay: `${i * .07}s` }}>
-                <div className="mavt" style={{ background: m.g }}>{m.i}</div>
+
+                <div className="mavt">
+                  {m.photo ? (
+                    <img src={m.photo} alt={m.n} />
+                  ) : (
+                    <span>{m.i}</span>
+                  )}
+                </div>
+
                 <div className="mn">{m.n}</div>
                 <div className="mr2">{m.r}</div>
                 <div className="mc">📍 {m.c}</div>
+                <div className="mc">📱 {m.p}</div>
+
                 <span className="mbadge">{m.b}</span>
+
               </div>
             ))}
           </div>
@@ -79,8 +90,11 @@ function Aboutus() {
           <div className="ggrid fu">
             {data.GALLERY.map((g, i) => (
               <div key={i} className="gitem">
-                <div className="ginn" style={{ background: g.bg }}>
-                  {g.e}<div className="govr"><span className="gcap">{g.l}</span></div>
+                <div className="ginn">
+                  <img src={g.photo} />
+                  <div className="govr">
+                    <span className="gcap">{g.l}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -89,7 +103,7 @@ function Aboutus() {
 
         <div className="qsec">
           <p className="qt">"समाज की एकता ही हमारी सबसे बड़ी शक्ति है।<br />Unity of community is our greatest strength."</p>
-          <p className="qa">— Mahawar Samaj Founding Charter, 1952</p>
+          <p className="qa">— श्री महावर वैश्य नवयुवक मण्डल मण्डी अटेली, 2022</p>
         </div>
       </>
     </div>

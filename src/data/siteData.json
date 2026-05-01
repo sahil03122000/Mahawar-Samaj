@@ -3,7 +3,8 @@
     "name": "Mahawar Samaj",
     "hindi": "महावर समाज",
     "tagline": "Serving the Mahawar community with unity, tradition and progress. Building a stronger tomorrow together.",
-    "year": "2023"
+    "year": "2022",
+    "hindiyear": "२०२२"
   },
   "ticker": [
     {
@@ -14,7 +15,7 @@
     {
       "i": "🎉",
       "t": "UPCOMING",
-      "p": "Holi Milan Samaroh — 15 March, Ateli Mandi"
+      "p": "प्रतिभा सम्मान एवं होली मधुर मिलन समारोह — 15 March, Ateli Mandi"
     },
     {
       "i": "🏆",
@@ -22,11 +23,23 @@
       "p": "Deepika Gupta achieves Chartered Accountant (CA) qualification"
     }
   ],
+  "EVENTS": [
+    {
+      "day": "15",
+      "mon": "MAR",
+      "name": "प्रतिभा सम्मान एवं होली मधुर मिलन समारोह",
+      "type": "FESTIVAL 🎨",
+      "desc": "Annual Holi with cultural performances, traditional food, and joyful community bonding.",
+      "loc": "ओ३म् गार्डन अटेली - नारनौल रोड, अटेली मण्डी",
+      "time": "2:15 PM",
+      "bg": "linear-gradient(135deg,#4A0000,#8B2500)"
+    }
+  ],
   "events": [
     {
-      "title": "Holi Milan Samaroh",
-      "date": "14 March",
-      "location": "Jaipur",
+      "title": "प्रतिभा सम्मान एवं होली मधुर मिलन समारोह",
+      "date": "15 March",
+      "location": "ओ३म् गार्डन अटेली - नारनौल रोड, अटेली मण्डी",
       "description": "Annual celebration of colors and community."
     },
     {
@@ -55,12 +68,12 @@
     {
       "i": "📞",
       "l": "Phone",
-      "v": "+91 99090 90900"
+      "v": "9991856255, 8053640873, 9729883584"
     },
     {
       "i": "✉️",
       "l": "Email",
-      "v": "info@mahawarsamaj.org"
+      "v": "mahwarsamajateli@gmail.com"
     },
     {
       "i": "🕐",
@@ -83,100 +96,118 @@
   },
   "MEMBERS": [
     {
-      "n": "Shri Rajendra Mahawar",
+      "n": "नवीन महावर",
       "r": "PRESIDENT",
-      "c": "Jaipur",
-      "b": "पदाधिकारी",
-      "i": "र",
-      "g": "linear-gradient(135deg,#FF6B00,#8B0000)"
+      "c": "Ateli Mandi",
+      "b": "अध्यक्ष",
+      "i": "न",
+      "g": "linear-gradient(135deg,#FF6B00,#8B0000)",
+      "p": "9991856255"
     },
     {
-      "n": "Shri Suresh Agrawal",
-      "r": "SECRETARY",
-      "c": "Jaipur",
-      "b": "पदाधिकारी",
-      "i": "सु",
-      "g": "linear-gradient(135deg,#8B0000,#4A0000)"
+      "n": "कपिल महावर",
+      "r": "Vice President",
+      "c": "Ateli Mandi",
+      "b": "उपाध्यक्ष",
+      "i": "क",
+      "g": "linear-gradient(135deg,#8B0000,#4A0000)",
+      "p": "8684038624"
     },
     {
-      "n": "Smt. Sunita Devi",
-      "r": "TREASURER",
-      "c": "Jodhpur",
-      "b": "पदाधिकारी",
-      "i": "सु",
-      "g": "linear-gradient(135deg,#D4A017,#8B6010)"
-    },
-    {
-      "n": "Shri Vikram Mahawar",
-      "r": "VICE PRESIDENT",
-      "c": "Kota",
-      "b": "पदाधिकारी",
-      "i": "वि",
-      "g": "linear-gradient(135deg,#006B30,#003A1A)"
-    },
-    {
-      "n": "Smt. Rekha Sharma",
-      "r": "WOMEN'S WING",
-      "c": "Ajmer",
-      "b": "सदस्य",
-      "i": "रे",
-      "g": "linear-gradient(135deg,#8B0050,#4A0030)"
-    },
-    {
-      "n": "Shri Deepak Mahawar",
-      "r": "YOUTH LEADER",
-      "c": "Bikaner",
-      "b": "युवा नेता",
-      "i": "दी",
-      "g": "linear-gradient(135deg,#001A4A,#003A8B)"
-    },
-    {
-      "n": "Shri Mahesh Gupta",
-      "r": "CULTURAL HEAD",
-      "c": "Jaipur",
-      "b": "सदस्य",
-      "i": "म",
-      "g": "linear-gradient(135deg,#5C1A00,#8B3300)"
-    },
-    {
-      "n": "Dr. Anita Mahawar",
-      "r": "HEALTH COMMITTEE",
-      "c": "Udaipur",
-      "b": "विशेषज्ञ",
+      "n": "अमन महावर",
+      "r": "Treasurer",
+      "c": "Ateli Mandi",
+      "b": "कोषाध्यक्ष",
       "i": "अ",
-      "g": "linear-gradient(135deg,#1A3A00,#3A6B00)"
+      "g": "linear-gradient(135deg,#D4A017,#8B6010)",
+      "p": "9034312165"
+    },
+    {
+      "n": "सुमित महावर",
+      "r": "Secretary",
+      "c": "Ateli Mandi",
+      "b": "सचिव",
+      "i": "सु",
+      "g": "linear-gradient(135deg,#006B30,#003A1A)",
+      "p": "9560636506"
+    },
+    {
+      "n": "जितिन महावर",
+      "r": "Joint Secretary",
+      "c": "Ateli Mandi",
+      "b": "सह सचिव",
+      "i": "जि",
+      "g": "linear-gradient(135deg,#8B0050,#4A0030)",
+      "p": "9466222700",
+      "photo": "./images/jitu.png"
+    },
+    {
+      "n": "चिराग महावर",
+      "r": "Executive President",
+      "c": "Ateli Mandi",
+      "b": "कार्यकारिणी अध्यक्ष",
+      "i": "चि",
+      "g": "linear-gradient(135deg,#001A4A,#003A8B)",
+      "p": "8572037469"
+    },
+    {
+      "n": "विष्णु महावर",
+      "r": "General Secretary",
+      "c": "Ateli Mandi",
+      "b": "महामंत्री",
+      "i": "वि",
+      "g": "linear-gradient(135deg,#5C1A00,#8B3300)",
+      "p": "--------"
+    },
+    {
+      "n": "जितेश महावर",
+      "r": "Former President",
+      "c": "Ateli Mandi",
+      "b": "पूर्व अध्यक्ष",
+      "i": "जि",
+      "g": "linear-gradient(135deg,#1A3A00,#3A6B00)",
+      "p": "9729883584"
+    },
+    {
+      "n": "नितेश महावर",
+      "r": "Former Vice President",
+      "c": "Ateli Mandi",
+      "b": "पूर्व उपाध्यक्ष",
+      "i": "नि",
+      "g": "linear-gradient(135deg,#1A3A00,#3A6B00)",
+      "p": "8053640873"
     }
   ],
   "GALLERY": [
     {
       "e": "🪔",
       "bg": "linear-gradient(135deg,#8B0000,#D4A017 60%,#FF6B00)",
-      "l": "Diwali Celebration 2024"
+      "l": "Deep Prajwalan Ceremony, 2025.",
+      "photo": "./images/4.jpeg"
     },
     {
       "e": "🎊",
       "bg": "linear-gradient(135deg,#FF6B00,#8B0000)",
-      "l": "Annual Function"
+      "l": "कार्यक्रम का भव्य दृश्य, 2025",
+      "photo": "./images/7.jpeg"
     },
     {
       "e": "🏛️",
       "bg": "linear-gradient(135deg,#5C3D1E,#D4A017)",
-      "l": "Samaj Bhawan"
+      "l": "Chief Guest saman ceremony, 2025 ",
+      "photo": "./images/5.jpeg"
     },
     {
       "e": "👨‍👩‍👧‍👦",
       "bg": "linear-gradient(135deg,#4A0000,#FF8C00)",
-      "l": "Community Meet"
+      "l": "Community Meet",
+      "photo": "./images/12.jpeg"
     },
     {
       "e": "🎭",
       "bg": "linear-gradient(135deg,#D4A017,#8B0000)",
-      "l": "Cultural Program"
-    },
-    {
-      "e": "📚",
-      "bg": "linear-gradient(135deg,#001A4A,#FF6B00)",
-      "l": "Scholarship Award"
+      "l": "Cultural Program",
+      "photo": "./images/noimage.jpg"
     }
   ]
 }

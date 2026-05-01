@@ -8,8 +8,8 @@ import ComingSoon from './App1';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ComingSoon />
-    {/* <App /> */}
+    {/* <ComingSoon /> */}
+    <App />
   </React.StrictMode>
 );
 

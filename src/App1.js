@@ -326,125 +326,125 @@ opacity:.4;
 `;
 
 const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
-id: i,
-size: Math.random()*3+10,
-left: Math.random()*100,
-delay: -(Math.random()*20),
-dur: Math.random()*10+14
+    id: i,
+    size: Math.random() * 3 + 10,
+    left: Math.random() * 100,
+    delay: -(Math.random() * 20),
+    dur: Math.random() * 10 + 14
 }));
 
 const LAUNCH = new Date("2026-03-15T00:00:00");
 
-function useCountdown(target){
-const calc=()=>{
-const diff=target-Date.now();
-if(diff<=0)return{d:0,h:0,m:0,s:0};
-return{
-d:Math.floor(diff/86400000),
-h:Math.floor((diff%86400000)/3600000),
-m:Math.floor((diff%3600000)/60000),
-s:Math.floor((diff%60000)/1000)
-};
-};
-const[t,setT]=useState(calc);
-useEffect(()=>{
-const id=setInterval(()=>setT(calc()),1000);
-return()=>clearInterval(id);
-},[]);
-return t;
+function useCountdown(target) {
+    const calc = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 };
+        return {
+            d: Math.floor(diff / 86400000),
+            h: Math.floor((diff % 86400000) / 3600000),
+            m: Math.floor((diff % 3600000) / 60000),
+            s: Math.floor((diff % 60000) / 1000)
+        };
+    };
+    const [t, setT] = useState(calc);
+    useEffect(() => {
+        const id = setInterval(() => setT(calc()), 1000);
+        return () => clearInterval(id);
+    }, []);
+    return t;
 }
 
-export default function ComingSoon(){
+export default function ComingSoon() {
 
-const {d,h,m,s}=useCountdown(LAUNCH);
+    const { d, h, m, s } = useCountdown(LAUNCH);
 
-const totalDays=Math.ceil((LAUNCH-new Date("2026-01-01"))/86400000);
-const elapsed=Math.ceil((Date.now()-new Date("2026-01-01"))/86400000);
-const progress=Math.min(100,Math.max(5,Math.round((elapsed/totalDays)*100)));
+    const totalDays = Math.ceil((LAUNCH - new Date("2026-01-01")) / 86400000);
+    const elapsed = Math.ceil((Date.now() - new Date("2026-01-01")) / 86400000);
+    const progress = Math.min(100, Math.max(5, Math.round((elapsed / totalDays) * 100)));
 
-return(
-<div style={{minHeight:"100vh",position:"relative"}}>
+    return (
+        <div style={{ minHeight: "100vh", position: "relative" }}>
 
-<style>{CSS}</style>
+            <style>{CSS}</style>
 
-<div className="bg"/>
+            <div className="bg" />
 
-<div className="mw">
-<div className="ml ml1"/>
-<div className="ml ml2"/>
-<div className="ml ml3"/>
-<div className="ml ml4"/>
-<div className="ml ml5"/>
-</div>
+            <div className="mw">
+                <div className="ml ml1" />
+                <div className="ml ml2" />
+                <div className="ml ml3" />
+                <div className="ml ml4" />
+                <div className="ml ml5" />
+            </div>
 
-<div className="ptcl">
-{PARTICLES.map(p=>(
-<div key={p.id} className="p"
-style={{
-width:p.size,
-height:p.size,
-left:p.left+"%",
-animationDelay:p.delay+"s",
-animationDuration:p.dur+"s"
-}}/>
-))}
-</div>
+            <div className="ptcl">
+                {PARTICLES.map(p => (
+                    <div key={p.id} className="p"
+                        style={{
+                            width: p.size,
+                            height: p.size,
+                            left: p.left + "%",
+                            animationDelay: p.delay + "s",
+                            animationDuration: p.dur + "s"
+                        }} />
+                ))}
+            </div>
 
-<div className="diya diya-tl">🪔</div>
-<div className="diya diya-tr">🪔</div>
-<div className="diya diya-bl">🪔</div>
-<div className="diya diya-br">🪔</div>
+            <div className="diya diya-tl">🪔</div>
+            <div className="diya diya-tr">🪔</div>
+            <div className="diya diya-bl">🪔</div>
+            <div className="diya diya-br">🪔</div>
 
-<div className="wrap">
+            <div className="wrap">
 
-<div className="om-ring">
-<div className="om-ring-circle"/>
-<div className="om-ring-circle2"/>
-<div className="om-glyph">
-<img src={process.env.PUBLIC_URL+"/images/logo.png"} alt="logo"/>
-</div>
-</div>
+                <div className="om-ring">
+                    <div className="om-ring-circle" />
+                    <div className="om-ring-circle2" />
+                    <div className="om-glyph">
+                        <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="logo" />
+                    </div>
+                </div>
 
-<div className="logo-hi">महावर समाज अटेली मंडी</div>
-<div className="logo-en">MAHAWAR SAMAJ ATELI MANDI</div>
+                <div className="logo-hi">महावर समाज अटेली मंडी</div>
+                <div className="logo-en">MAHAWAR SAMAJ ATELI MANDI</div>
 
-<div className="orn">
-<div className="ol"/>
-<span>🪔</span>
-<div className="ol r"/>
-</div>
+                <div className="orn">
+                    <div className="ol" />
+                    <span>🪔</span>
+                    <div className="ol r" />
+                </div>
 
-<span className="cs-tag">— नया अध्याय शुरू होने वाला है —</span>
+                <span className="cs-tag">— नया अध्याय शुरू होने वाला है —</span>
 
-<h1 className="cs-h1">Coming <em>Soon</em></h1>
+                <h1 className="cs-h1">Coming <em>Soon</em></h1>
 
-<p className="cs-deva">कुछ खास तैयार हो रहा है आपके लिए</p>
+                <p className="cs-deva">कुछ खास तैयार हो रहा है आपके लिए</p>
 
-<p className="cs-sub">
-We are working hard to bring you an even better experience.
-Our new website launches very soon — stay tuned!
-</p>
+                <p className="cs-sub">
+                    We are working hard to bring you an even better experience.
+                    Our new website launches very soon — stay tuned!
+                </p>
 
-<div className="countdown">
-<div className="cbox"><span className="cnum">{String(d).padStart(2,"0")}</span><span className="clbl">Days</span></div>
-<div className="cdot">:</div>
-<div className="cbox"><span className="cnum">{String(h).padStart(2,"0")}</span><span className="clbl">Hours</span></div>
-<div className="cdot">:</div>
-<div className="cbox"><span className="cnum">{String(m).padStart(2,"0")}</span><span className="clbl">Minutes</span></div>
-<div className="cdot">:</div>
-<div className="cbox"><span className="cnum">{String(s).padStart(2,"0")}</span><span className="clbl">Seconds</span></div>
-</div>
+                <div className="countdown">
+                    <div className="cbox"><span className="cnum">{String(d).padStart(2, "0")}</span><span className="clbl">Days</span></div>
+                    <div className="cdot">:</div>
+                    <div className="cbox"><span className="cnum">{String(h).padStart(2, "0")}</span><span className="clbl">Hours</span></div>
+                    <div className="cdot">:</div>
+                    <div className="cbox"><span className="cnum">{String(m).padStart(2, "0")}</span><span className="clbl">Minutes</span></div>
+                    <div className="cdot">:</div>
+                    <div className="cbox"><span className="cnum">{String(s).padStart(2, "0")}</span><span className="clbl">Seconds</span></div>
+                </div>
 
-<div className="prog-wrap">
-<div className="prog-track">
-<div className="prog-fill" style={{width:progress+"%"}}/>
-</div>
-</div>
+                <div className="prog-wrap">
+                    <div className="prog-track">
+                        <div className="prog-fill" style={{ width: progress + "%" }} />
+                    </div>
+                </div>
 
-<p className="foot">© 2025 Mahawar Samaj • Ateli Mandi, Haryana</p>
+                <p className="foot">© 2025 Mahawar Samaj • Ateli Mandi, Haryana</p>
 
-</div>
+            </div>
 
-</div>
-);
+        </div>
+    );
 }

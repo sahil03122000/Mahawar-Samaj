@@ -26,7 +26,7 @@ function ContactSection() {
                     </div>
                 ))}
             </div>
-            <div className="cform fu">
+            {/* <div className="cform fu">
                 {sent ? (
                     <div style={{ textAlign: "center", padding: "2.5rem" }}>
                         <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🙏</div>
@@ -72,7 +72,7 @@ function ContactSection() {
                         </div>
                     </>
                 )}
-            </div>
+            </div> */}
         </section>
     );
 }
