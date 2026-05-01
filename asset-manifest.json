@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Mahawar-Samaj/static/css/main.59063162.css",
-    "main.js": "/Mahawar-Samaj/static/js/main.47471840.js",
-    "static/js/453.e3c5249a.chunk.js": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js",
-    "index.html": "/Mahawar-Samaj/index.html",
-    "main.59063162.css.map": "/Mahawar-Samaj/static/css/main.59063162.css.map",
-    "main.47471840.js.map": "/Mahawar-Samaj/static/js/main.47471840.js.map",
-    "453.e3c5249a.chunk.js.map": "/Mahawar-Samaj/static/js/453.e3c5249a.chunk.js.map"
+    "main.css": "/static/css/main.59063162.css",
+    "main.js": "/static/js/main.4abd4277.js",
+    "static/js/453.e3c5249a.chunk.js": "/static/js/453.e3c5249a.chunk.js",
+    "index.html": "/index.html",
+    "main.59063162.css.map": "/static/css/main.59063162.css.map",
+    "main.4abd4277.js.map": "/static/js/main.4abd4277.js.map",
+    "453.e3c5249a.chunk.js.map": "/static/js/453.e3c5249a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.59063162.css",
-    "static/js/main.47471840.js"
+    "static/js/main.4abd4277.js"
   ]
 }
